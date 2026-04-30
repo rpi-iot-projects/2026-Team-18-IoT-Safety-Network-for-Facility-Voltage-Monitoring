@@ -26,7 +26,7 @@ Traditional non-contact voltage diagnostics pose significant safety risks and la
 ## Usage
 1. **Firmware**: Deploy the code in `/firmware/` to two ESP32 nodes (update `Configuration` for each).
 2. **Bridge**: Run `python3 pi_backend/bridge.py` to start the circular buffer persistence.
-3. **Dashboard**: Serve the `/webapp/` directory and access via the Pi's IP address.
+3. **Dashboard**: Serve the `/webapp/` directory and access via the Pi's IP address (make sure to change IP address for all code files). 
 
 ## Results and Demonstration
 The system successfully monitors independent telemetry streams (TX_01 and TX_02) with sub-second latency via WebSocket broadcasts. Data persistence is managed autonomously via a 500-record rolling window, protecting the gateway's storage from fatigue while ensuring 24/7 uptime.
