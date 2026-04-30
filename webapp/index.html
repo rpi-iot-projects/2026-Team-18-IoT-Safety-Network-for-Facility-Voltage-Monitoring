@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWNCVSD Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>System Dashboard</h1>
+        <p>Facility-Wide Multi-Node Voltage Monitoring [cite: 1410]</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <div class="node-label">Node TX_01 <span id="status-TX_01" class="status-badge">🟡</span></div>
+            <span class="live-voltage-text"><span id="live-voltage-1">--.-</span><span class="unit">V</span></span>
+            <div class="chart-wrapper"><canvas id="voltageChart-1"></canvas></div>
+        </div>
+        <div class="card">
+            <div class="node-label">Node TX_02 <span id="status-TX_02" class="status-badge">🟡</span></div>
+            <span class="live-voltage-text"><span id="live-voltage-2">--.-</span><span class="unit">V</span></span>
+            <div class="chart-wrapper"><canvas id="voltageChart-2"></canvas></div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <h3>Live Database Auditor</h3>
+        <select id="nodeFilter" onchange="refreshTable()">
+            <option value="ALL">All Nodes</option>
+            <option value="TX_01">TX_01</option>
+            <option value="TX_02">TX_02</option>
+        </select>
+        <table id="logTable" style="width:100%; margin-top:15px; text-align:left;">
+            <thead><tr><th>Node</th><th>Voltage</th><th>Time (EDT)</th></tr></thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
